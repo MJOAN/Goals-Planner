@@ -3,18 +3,22 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const PORT = 3000;
 
-const connection = require("./database/connection.js")
+const PORT = process.env.PORT || 8080;
+
+const exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+require("./routes/routes.js")(app);
 
 app.listen(PORT, function() {
     console.log("listening on port", PORT);
