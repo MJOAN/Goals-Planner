@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 
 var app = express();
-var port = 3000;
+var PORT = 3000;
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,7 +19,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "planner_db"
+    database: "goals_db"
 });
 
 connection.connect(function(err) {
@@ -31,33 +31,31 @@ connection.connect(function(err) {
 });
 
 
-// Use Handlebars to render the main index.html page with the todos in it.
 app.get("/", function(req, res) {
     connection.query("SELECT * FROM goals;", function(err, data) {
         if (err) {
             return res.status(500).end();
         }
-        res.render("index", { plans: data });
+        res.render("index", { goals: data });
     });
 });
 
 
-// Create a new todo
-app.post("/todos", function(req, res) {
-    connection.query("INSERT INTO plans (plan) VALUES (?)", [req.body.plan], function(err, result) {
+// CREATE
+app.post("/goal", function(req, res) {
+    connection.query("INSERT INTO goals (goal) VALUES (?)", [req.body.goal], function(err, result) {
         if (err) {
             return res.status(500).end();
         }
-
-        // Send back the ID of the new todo
+        console.log("create goal set:", req.body.goal)
         res.json({ id: result.insertId });
         console.log({ id: result.insertId });
     });
 });
 
 
-// Retrieve all todos
-app.get("/todos", function(req, res) {
+// GET ALL
+app.get("/goals", function(req, res) {
     connection.query("SELECT * FROM goals;", function(err, data) {
         if (err) {
             return res.status(500).end();
@@ -67,9 +65,9 @@ app.get("/todos", function(req, res) {
 });
 
 
-// Update a todo
-app.put("/todos/:id", function(req, res) {
-    connection.query("UPDATE goals SET plan = ? WHERE id = ?", [req.body.plan, req.params.id], function(err, result) {
+// UPDATE
+app.put("/goal/:id", function(req, res) {
+    connection.query("UPDATE goals SET goals = ? WHERE id = ?", [req.body.plan, req.params.id], function(err, result) {
         if (err) {
             // If an error occurred, send a generic server faliure
             return res.status(500).end();
@@ -83,8 +81,8 @@ app.put("/todos/:id", function(req, res) {
 });
 
 
-// Delete a todo
-app.delete("/todos/:id", function(req, res) {
+// DELETE
+app.delete("/goal/:id", function(req, res) {
     connection.query("DELETE FROM goals WHERE id = ?", [req.params.id], function(err, result) {
         if (err) {
             // If an error occurred, send a generic server faliure
@@ -99,6 +97,6 @@ app.delete("/todos/:id", function(req, res) {
 });
 
 
-app.listen(port, function() {
-    console.log("listening on port", port);
-});
+app.listen(PORT, function() {
+    console.log("listening on port", PORT);
+})

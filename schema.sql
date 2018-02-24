@@ -10,15 +10,15 @@ To run this file, we do the following in our Terminal:
 
 */
 
--- Create the database day_planner_db and specified it for use.
-CREATE DATABASE planner_db;
-USE planner_db;
+-- Create the database goals_db and specified it for use.
+CREATE DATABASE goals_db;
+USE goals_db;
 
 -- Create the table plans.
 CREATE TABLE goals
 (
 id int NOT NULL AUTO_INCREMENT,
-plan varchar(255) NOT NULL,
+goal varchar(255) NOT NULL,
 PRIMARY KEY (id)
 );
 

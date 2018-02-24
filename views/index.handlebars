@@ -1,89 +1,90 @@
 <h1>Daily To Do's</h1>
 
 <ul>
-  {{#each plans}}
+  <h2>Added:</h2>
+  {{#each goals}}
   <li>
     <p>
-      {{this.id}}. {{this.plan}}
-
-      <button data-goalid="{{this.id}}" class="delplan">Delete!</button>
+      {{this.id}}. {{this.goal}}
+      <button data-goalid="{{this.id}}" class="delgoal">Delete!</button>
     </p>
   </li>
   {{/each}}
 </ul>
 
 <h2>Create a Goal</h2>
-<form id="createplan" class="button-size">
-  <textarea type="text" name="goal"></textarea>
-  <button type="submit">Save Goal!</button>
+<section class="container vert-offset-top-2">
+<form id="creategoal" class="form-group col-auto">
+  <textarea type="text" class="font-weight-light" name="goal"></textarea>
+  <button type="submit" class="btn btn btn-danger">Save Goal!</button>
 </form>
+</section>
 
 <h2>Update a Goal</h2>
-<form id="updateplan" class="button-size">
+<section class="container vert-offset-top-2">
+<form id="updategoal" class="form-group col-auto">
+  <textarea type="text" name="" class="font-weight-light" placeholder="goal"></textarea>
+  <button type="submit" class="btn btn btn-primary">Update Goal!</button>
   <select name="id">
 		{{#each goals}}
 			<option value="{{this.id}}">{{this.goal}}</option>
 		{{/each}}
 	</select>
-  <textarea type="text" name="goal" placeholder="goal"></textarea>
-  <button type="submit">Update Goal!</button>
 </form>
+</section>
 
 <script type="text/javascript">
-  $(".delgoal").on("click", function(event) {
-    var id = $(this).data("planid");
 
-    // Send the DELETE request.
-    $.ajax("/todos/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
+// CREATE
   $("#creategoal").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newGoal = {
-      plan: $("#creategoal [name=goal]").val().trim()
+      goal: $("#creategoal [name=goal]").val().trim()
     };
 
-    // Send the POST request.
-    $.ajax("/todos", {
+    console.log("create goal button clicked + goal set:", newGoal)
+
+    $.ajax("/goal", {
       type: "POST",
       data: newGoal
     }).then(
       function() {
         console.log("created new goal");
-        // Reload the page to get the updated list
         location.reload();
       }
     );
   });
 
+// UPDATE
   $("#updategoal").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var id = $("[name=id]").val().trim();
 
-    var updatedPlan = {
-      plan: $("#updategoal [name=goal]").val().trim()
+    var updatedGoal = {
+      goal: $("#updategoal [name=goal]").val().trim()
     };
 
-    // Send the PUT request.
-    $.ajax("/todos/" + id, {
+    $.ajax("/goal/" + id, {
       type: "PUT",
-      data: updatedPlan
+      data: updatedGoal
     }).then(
       function() {
         console.log("updated id ", id);
-        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  // DELETE 
+  $(".delgoal").on("click", function(event) {
+    var id = $(this).data("goalid");
+    $.ajax("/goal/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted id ", id);
         location.reload();
       }
     );
