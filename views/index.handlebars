@@ -1,0 +1,91 @@
+<h1>Daily To Do's</h1>
+
+<ul>
+  {{#each plans}}
+  <li>
+    <p>
+      {{this.id}}. {{this.plan}}
+
+      <button data-goalid="{{this.id}}" class="delplan">Delete!</button>
+    </p>
+  </li>
+  {{/each}}
+</ul>
+
+<h2>Create a Goal</h2>
+<form id="createplan" class="button-size">
+  <textarea type="text" name="goal"></textarea>
+  <button type="submit">Save Goal!</button>
+</form>
+
+<h2>Update a Goal</h2>
+<form id="updateplan" class="button-size">
+  <select name="id">
+		{{#each goals}}
+			<option value="{{this.id}}">{{this.goal}}</option>
+		{{/each}}
+	</select>
+  <textarea type="text" name="goal" placeholder="goal"></textarea>
+  <button type="submit">Update Goal!</button>
+</form>
+
+<script type="text/javascript">
+  $(".delgoal").on("click", function(event) {
+    var id = $(this).data("planid");
+
+    // Send the DELETE request.
+    $.ajax("/todos/" + id, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("deleted id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#creategoal").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var newGoal = {
+      plan: $("#creategoal [name=goal]").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/todos", {
+      type: "POST",
+      data: newGoal
+    }).then(
+      function() {
+        console.log("created new goal");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $("#updategoal").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var id = $("[name=id]").val().trim();
+
+    var updatedPlan = {
+      plan: $("#updategoal [name=goal]").val().trim()
+    };
+
+    // Send the PUT request.
+    $.ajax("/todos/" + id, {
+      type: "PUT",
+      data: updatedPlan
+    }).then(
+      function() {
+        console.log("updated id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+</script>
