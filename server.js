@@ -3,6 +3,7 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
+const routes = require("./routes/routes.js");
 
 const PORT = process.env.PORT || 8080;
 
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-
+//app.use(routes);
 require("./routes/routes.js")(app);
 
 app.listen(PORT, function() {

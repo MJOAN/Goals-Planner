@@ -30,5 +30,6 @@ connection.connect(function(err) {
     }
     console.log("connected as id " + connection.threadId);
 });
+// mysql://x2nslg2srpk4dbg1:riw9wzi0dkdf9l7e@t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dyacgh3cxp6tc4o8
 
 module.exports = connection;

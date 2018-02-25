@@ -1,37 +1,58 @@
-<h1>Daily To Do's</h1>
 
-<ul>
-  <h2>Added:</h2>
+
+<div class="card border-secondary mb-3 container vert-offset-top-2">
+<div class="card-header">
+  The Great Big Goal List!
+  You Can Achieve Great Heights!
+</div>
+<ul class="list-group list-group-flush">
   {{#each goals}}
-  <li>
-    <p>
+  <li class="list-group-item">
+    <div class="card" style="width:auto;">
+      <div class="card-body">
       {{this.id}}. {{this.goal}}
-      <button data-goalid="{{this.id}}" class="delgoal">Delete!</button>
-    </p>
+      <button data-goalid="{{this.id}}" class="btn btn-danger delgoal">Done!</button>
+    </div>
+    </div>
   </li>
   {{/each}}
 </ul>
+</div>
 
-<h2>Create a Goal</h2>
-<section class="container vert-offset-top-2">
-<form id="creategoal" class="form-group col-auto">
-  <textarea type="text" class="font-weight-light" name="goal"></textarea>
-  <button type="submit" class="btn btn btn-danger">Save Goal!</button>
+<div class="card border-secondary mb-3 container vert-offset-top-2">
+<div class="card-header">
+  Set a Goal for 2018!!!
+</div>
+    <div class="card" style="width:auto;">
+      <div class="card-body">
+ <form id="creategoal" class="form-group col-auto">
+  <textarea type="text" name="goal" aria-label="Set:" class="font-weight-light form-control"></textarea>
+  <button type="submit" class="btn btn btn-success">Save Goal!</button>
+  </div>
+  </div>
+
 </form>
-</section>
+</div>
 
-<h2>Update a Goal</h2>
-<section class="container vert-offset-top-2">
-<form id="updategoal" class="form-group col-auto">
-  <textarea type="text" name="" class="font-weight-light" placeholder="goal"></textarea>
+<div class="card border-secondary mb-3 container vert-offset-top-2">
+<div class="card-header">
+  Goal Updates!!
+</div>
+
+    <div class="card" style="width:auto;">
+      <div class="card-body">
+<form id="updategoal" class="form-group">
+  <textarea type="text" name="goal" class="font-weight-light form-control"></textarea>
   <button type="submit" class="btn btn btn-primary">Update Goal!</button>
-  <select name="id">
+  <select name="id" class="selectpicker form control" style="width: 250px" data-width="auto" title="Choose one of the following...">
 		{{#each goals}}
 			<option value="{{this.id}}">{{this.goal}}</option>
 		{{/each}}
-	</select>
+    </select>
+        </div>
+      </div>
 </form>
-</section>
+</div>
 
 <script type="text/javascript">
 
