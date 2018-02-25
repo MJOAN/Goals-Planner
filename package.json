@@ -4,8 +4,8 @@
     "description": "goal planner",
     "main": "server.js",
     "engines": {
-        "node": "5.3.0",
-        "npm": "5.5.1"
+        "node": "9.3.0",
+        "npm": "5.6.0"
     },
     "scripts": {
         "start": "node server.js",
