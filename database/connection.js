@@ -13,14 +13,13 @@ var source = {
     // jawsDB
     jawsDB: {
         port: 3306,
-        host: "	t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         user: "x2nslg2srpk4dbg1",
         password: "riw9wzi0dkdf9l7e",
-        database: "goals_db"
+        database: "dyacgh3cxp6tc4o8"
     }
 };
 
-// we use source.[name of connection] to hook into mysql
 const connection = mysql.createConnection(source.jawsDB);
 
 connection.connect(function(err) {
@@ -30,6 +29,5 @@ connection.connect(function(err) {
     }
     console.log("connected as id " + connection.threadId);
 });
-// mysql://x2nslg2srpk4dbg1:riw9wzi0dkdf9l7e@t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dyacgh3cxp6tc4o8
 
 module.exports = connection;
