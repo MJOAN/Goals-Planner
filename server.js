@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 
 const routes = require("./routes/routes.js");
-const PORT = process.env.PORT || 8080;
+
 
 app.use(express.static(__dirname + "/public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -21,6 +21,8 @@ app.use("/", routes);
 require("./database/config.json");
 require("./database/connection.js");
 
-app.listen(PORT, function() {
-    console.log("listening on port", PORT);
+const port = process.env.PORT || 8080;
+
+app.listen(port, function() {
+    console.log("listening on port", port);
 })
