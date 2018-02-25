@@ -20,6 +20,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //app.use(routes);
 require("./routes/routes.js")(app);
+require("./database/config.json");
 
 app.listen(PORT, function() {
     console.log("listening on port", PORT);
