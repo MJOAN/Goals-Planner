@@ -41,6 +41,7 @@ connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
         password: "riw9wzi0dkdf9l7e",
         database: "dyacgh3cxp6tc4o8"
     }
+    
+const connection = mysql.createConnection(source.jawsDB);
 };
-
-const connection = mysql.createConnection(source.jawsDB);*/
+*/

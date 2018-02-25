@@ -10,7 +10,7 @@ router.get("/", function(req, res) {
             console.log("err", err)
         }
         res.render("index", { goals: data });
-        console.log("routes working for home")
+        console.log("routes get all working")
     });
 });
 
