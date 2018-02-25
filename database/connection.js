@@ -1,6 +1,6 @@
-var mysql = require("mysql");
+const mysql = require("mysql");
 
-var source = {
+const source = {
     // localhost
     localhost: {
         port: 3306,

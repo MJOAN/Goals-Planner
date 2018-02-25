@@ -17,9 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use("/", routes);
 
-//app.use(routes);
-require("./routes/routes.js")(app);
 require("./database/config.json");
 
 app.listen(PORT, function() {

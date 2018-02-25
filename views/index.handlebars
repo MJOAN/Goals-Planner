@@ -1,7 +1,7 @@
 
 
 <div class="card border-secondary mb-3 container vert-offset-top-2">
-<div class="card-header">
+<div class="card-header" style="color:#0e2e97">
   The Great Big Goal List!
   You Can Achieve Great Heights!
 </div>
@@ -9,7 +9,7 @@
   {{#each goals}}
   <li class="list-group-item">
     <div class="card" style="width:auto;">
-      <div class="card-body">
+      <div class="card-body" style="color:#103b80">
       {{this.id}}. {{this.goal}}
       <button data-goalid="{{this.id}}" class="btn btn-danger delgoal">Done!</button>
     </div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="card border-secondary mb-3 container vert-offset-top-2">
-<div class="card-header">
+<div class="card-header" style="color:#103b80">
   Set a Goal for 2018!!!
 </div>
     <div class="card" style="width:auto;">
@@ -35,12 +35,11 @@
 </div>
 
 <div class="card border-secondary mb-3 container vert-offset-top-2">
-<div class="card-header">
+<div class="card-header" style="color:#103b80">
   Goal Updates!!
 </div>
-
-    <div class="card" style="width:auto;">
-      <div class="card-body">
+<div class="card" style="width:auto;">
+  <div class="card-body">
 <form id="updategoal" class="form-group">
   <textarea type="text" name="goal" class="font-weight-light form-control"></textarea>
   <button type="submit" class="btn btn btn-primary">Update Goal!</button>
