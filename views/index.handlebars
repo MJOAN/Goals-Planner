@@ -1,112 +1,68 @@
-
-
 <div class="card border-secondary mb-3 container vert-offset-top-2">
-<div class="card-header" style="color:#0e2e97">
+  <div class="card-header" style="color:#0e2e97">
   The Great Big Goal List!
   You Can Achieve Great Heights!
-</div>
-<ul class="list-group list-group-flush">
-  {{#each goals}}
-  <li class="list-group-item">
-    <div class="card" style="width:auto;">
-      <div class="card-body" style="color:#103b80">
-      {{this.id}}. {{this.goal}}
-      <button data-goalid="{{this.id}}" class="btn btn-danger delgoal">Done!</button>
+  </div>
+
+  <div class="card" style="width:auto;">
+    <div class="card-body" style="color:#103b80">
+
+{{!--   <form id="deletegoal" class="form-group"> --}}
+
+    <ul class="list-group list-group-flush">
+    {{#each goals}}
+      <li class="list-group-item">
+        {{this.id}}. {{this.goal}}
+          <button data-id="{{this.id}}" data-goal="{{this.goal}}" class="delgoal btn btn-danger">Done!</button>
+      </li>
+    {{/each}}
+    </ul>
+
+{{!--   </form> --}}
+
     </div>
-    </div>
-  </li>
-  {{/each}}
-</ul>
+  </div>
 </div>
 
-<div class="card border-secondary mb-3 container vert-offset-top-2">
+
+<div class="card border-secondary mb-3 container vert-offset-top-2"> 
 <div class="card-header" style="color:#103b80">
   Set a Goal for 2018!!!
 </div>
-    <div class="card" style="width:auto;">
-      <div class="card-body">
- <form id="creategoal" class="form-group col-auto">
-  <textarea type="text" name="goal" aria-label="Set:" class="font-weight-light form-control"></textarea>
-  <button type="submit" class="btn btn btn-success">Save Goal!</button>
-  </div>
-  </div>
+    <div class="card" style="width:auto;"> 
+      <div class="card-body">  
+ 
+ <form id="creategoal" class="form-group">
+    <textarea type="text" name="goal" aria-label="" class="font-weight-light form-control"></textarea>
+      <button type="submit" class="btn btn btn-success">Save Goal!</button>
+  </form>
 
-</form>
+  </div>
+  </div>
 </div>
 
-<div class="card border-secondary mb-3 container vert-offset-top-2">
+
+
+
+<div class="card border-secondary mb-3 container vert-offset-top-2"> 
 <div class="card-header" style="color:#103b80">
   Goal Updates!!
 </div>
-<div class="card" style="width:auto;">
-  <div class="card-body">
-<form id="updategoal" class="form-group">
-  <textarea type="text" name="goal" class="font-weight-light form-control"></textarea>
-  <button type="submit" class="btn btn btn-primary">Update Goal!</button>
-  <select name="id" class="selectpicker form control" style="width: 250px" data-width="auto" title="Choose one of the following...">
-		{{#each goals}}
-			<option value="{{this.id}}">{{this.goal}}</option>
-		{{/each}}
-    </select>
-        </div>
-      </div>
-</form>
-</div>
+  <div class="card" style="width:auto;">  
+    <div class="card-body">    
 
-<script type="text/javascript">
+  <form id="updategoal" class="form-group">
+    <textarea type="text" name="goal" class="font-weight-light form-control"></textarea>
+      <select name="id" class="selectpicker form control" style="width: 250px" data-width="auto" title="Choose one of the following...">
+  		    {{#each goals}}
+  			     <option value="{{this.id}}">{{this.goal}}</option>
+  		    {{/each}}
+      </select>
+        <button type="submit" class="btn btn btn-primary">Update Goal!</button>
+      </form>
 
-// CREATE
-  $("#creategoal").on("submit", function(event) {
-    event.preventDefault();
+    </div> 
+  </div> 
+</div> 
 
-    var newGoal = {
-      goal: $("#creategoal [name=goal]").val().trim()
-    };
 
-    console.log("create goal button clicked + goal set:", newGoal)
-
-    $.ajax("/goal", {
-      type: "POST",
-      data: newGoal
-    }).then(
-      function() {
-        console.log("created new goal");
-        location.reload();
-      }
-    );
-  });
-
-// UPDATE
-  $("#updategoal").on("submit", function(event) {
-    event.preventDefault();
-
-    var id = $("[name=id]").val().trim();
-
-    var updatedGoal = {
-      goal: $("#updategoal [name=goal]").val().trim()
-    };
-
-    $.ajax("/goal/" + id, {
-      type: "PUT",
-      data: updatedGoal
-    }).then(
-      function() {
-        console.log("updated id ", id);
-        location.reload();
-      }
-    );
-  });
-
-  // DELETE 
-  $(".delgoal").on("click", function(event) {
-    var id = $(this).data("goalid");
-    $.ajax("/goal/" + id, {
-      type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted id ", id);
-        location.reload();
-      }
-    );
-  });
-</script>

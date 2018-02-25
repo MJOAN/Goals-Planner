@@ -1,0 +1,28 @@
+body {
+  width: 99%;
+  height: 900px;
+  font-size: 23px;
+  font-weight: bold;
+  font-family: 'Arvo', serif;
+  background-color;
+}
+
+form-group {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 990px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 990px;
+  }
+}
+
+

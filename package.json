@@ -1,23 +1,38 @@
 {
-    "name": "goal_planner",
-    "version": "1.0.0",
-    "description": "goal planner",
-    "main": "server.js",
-    "engines": {
-        "node": "9.3.0",
-        "npm": "5.6.0"
-    },
-    "scripts": {
-        "start": "node server.js",
-        "serve": "node --version",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.14.2",
-        "express": "^4.13.4",
-        "express-handlebars": "^3.0.0",
-        "mysql": "^2.10.2"
-    }
+  "name": "goal_planner",
+  "version": "1.1.1",
+  "description": "goal planner",
+  "main": "server.js",
+  "engines": {
+    "node": "9.3.0",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node --version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MJOAN",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.10.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MJOAN/Goals-Planner.git"
+  },
+  "keywords": [
+    "goals",
+    "mysql",
+    "handlebars",
+    "express"
+  ],
+  "bugs": {
+    "url": "https://github.com/MJOAN/Goals-Planner/issues"
+  },
+  "homepage": "https://github.com/MJOAN/Goals-Planner#readme"
 }
