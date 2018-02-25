@@ -20,7 +20,7 @@ const source = {
     }
 };
 
-const connection = mysql.createConnection(source.localhost);
+const connection = mysql.createConnection(source.jawsDB);
 
 connection.connect(function(err) {
     if (err) {
@@ -31,3 +31,6 @@ connection.connect(function(err) {
 });
 
 module.exports = connection;
+
+// process.env.JAWSDB_URL) {
+// connection = mysql.createConnection(process.env.JAWSDB_URL);
