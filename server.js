@@ -21,8 +21,8 @@ app.use("/", routes);
 require("./database/config.json");
 require("./database/connection.js");
 
-const port = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3306;
 
-app.listen(port, function() {
+app.listen(PORT, function() {
     console.log("listening on port", port);
 })

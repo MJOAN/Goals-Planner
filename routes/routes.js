@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../database/connection.js")
 
-connection = mysql.createConnection(source.jawsDB);
-
 connection.connect(function(err) {
     if (err) {
         console.error('error connecting: ' + err.stack);
