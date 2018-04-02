@@ -2,6 +2,15 @@ const express = require("express");
 const router = express.Router();
 const connection = require("../database/connection.js")
 
+connection = mysql.createConnection(source.jawsDB);
+
+connection.connect(function(err) {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId);
+});
 
 router.get("/", function(req, res) {
     connection.query("SELECT * FROM goals;", function(err, data) {
