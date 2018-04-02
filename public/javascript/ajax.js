@@ -25,7 +25,8 @@ $(function() {
     event.preventDefault();
 
     var id = $("[name=id]").val().trim();
-
+    //var id = $(this).data("id");
+    
     var updatedGoal = {
       goal: $("#updategoal [name=goal]").val().trim()
     };
@@ -51,7 +52,7 @@ $(function() {
     var id = $(this).data("id");
     console.log("delete button id: ", id)
 
-    //var id = $(this).data("id");     // ha, all my attempts right here
+    //var id = $(this).data("id"); // ha, all my attempts right here
     //var id = $(".delgoal").data("data-id");
     // var id =  $(".delgoal").attr("data-id"); 
     //var id = this.data; // data-goalid="{{this.id}}
