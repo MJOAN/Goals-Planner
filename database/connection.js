@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 
-const source = {
+var source = {
     // localhost
     localhost: {
         port: 3306,
@@ -19,7 +19,7 @@ const source = {
         database: "dyacgh3cxp6tc4o8"
     }
     
-const connection = mysql.createConnection(source.jawsDB);
+var connection = mysql.createConnection(source.jawsDB);
 // const connection = mysql.createConnection(process.env.JAWSDB_URL);
 connection.connect();
 
