@@ -26,10 +26,12 @@ $(function() {
 
     //var id = $("[name=id]").val().trim();
     var id = $(this).data("id");
-    
+    console.log("update button works for id: ", id)
+
     var updatedGoal = {
       goal: $("#updategoal [name=goal]").val().trim()
     };
+    
     console.log("update button works", updatedGoal)
 
     $.ajax("/goals/" + id, {
