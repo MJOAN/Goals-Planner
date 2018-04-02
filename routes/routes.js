@@ -51,7 +51,7 @@ router.put("/goals/:id", function(req, res) {
             // If an error occurred, send a generic server faliure
             return res.status(500).end();
             console.log("err line 53", err)
-        } else if (result.changedRows == 0) {
+        } else if (result.changedRows === 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
             console.log("err line 57", err)
@@ -68,11 +68,11 @@ router.delete("/goals/:id", function(req, res) {
     console.log("req.params.id:", req.params.id)
     connection.query("DELETE FROM goals WHERE id = ?", [req.params.id], function(err, result) {
         if (err) {
-            return res.status(500).end();
-            console.log("routes error")
-        } else if (result.affectedRows == 0) {
-            return res.status(404).end();
-            console.log("routes error delete")
+            // return res.status(500).end();
+            console.log("routes error line 72", err)
+        } else if (result.affectedRows === 0) {
+            // return res.status(404).end();
+            console.log("routes error delete line 75", err)
         } else {
             res.status(200).end();
             console.log("routes working for delete")

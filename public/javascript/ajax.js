@@ -24,8 +24,8 @@ $(function() {
   $("#updategoal").on("submit", function(event) {
     event.preventDefault();
 
-    var id = $("[name=id]").val().trim();
-    //var id = $(this).data("id");
+    //var id = $("[name=id]").val().trim();
+    var id = $(this).data("id");
     
     var updatedGoal = {
       goal: $("#updategoal [name=goal]").val().trim()
