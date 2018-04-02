@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const mysql = require('mysql');
+
 const connection = require("../database/connection.js")
 
 router.get("/", function(req, res) {

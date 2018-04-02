@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 var source = {
 
@@ -18,7 +18,7 @@ var source = {
     }
 }
 
-var connection = mysql.createConnection(source.jawsDB);
+const connection = mysql.createConnection(source.jawsDB);
 
 connection.connect(function(err) {
     if (err) {
