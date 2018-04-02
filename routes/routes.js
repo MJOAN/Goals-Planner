@@ -2,7 +2,22 @@ const express = require("express");
 const router = express.Router();
 const mysql = require('mysql');
 
-const connection = require("../database/connection.js")
+const connection = mysql.createConnection({
+  host: "localhost" || "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  port: 3306,
+  user: "root" || "x2nslg2srpk4dbg1",
+  password: "" || "riw9wzi0dkdf9l7e",
+  database: "goals_db" || "dyacgh3cxp6tc4o8"
+});
+
+connection.connect(function(err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+});
+
 
 router.get("/", function(req, res) {
     connection.query("SELECT * FROM goals;", function(err, data) {

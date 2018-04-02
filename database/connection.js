@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-var source = {
+ var source = {
 
     localhost: {
         port: 3306,
@@ -16,7 +16,7 @@ var source = {
         password: "riw9wzi0dkdf9l7e",
         database: "dyacgh3cxp6tc4o8"
     }
-}
+};
 
 const connection = mysql.createConnection(source.jawsDB);
 
