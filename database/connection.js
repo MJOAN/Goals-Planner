@@ -1,18 +1,31 @@
-const mysql = require("mysql");
+const mysql = require('mysql');
 
-// Set up our connection information
-const connection = mysql.createConnection(process.env.JAWSDB_URL);
+ var source = {
 
-// Connect to the database
+    localhost: {
+        port: 3306,
+        host: 'localhost',
+        user: 'root',
+        password: "sql",
+        database: "goals_db"
+    },
+    jawsDB: {
+        port: 3306,
+        host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        user: "x2nslg2srpk4dbg1",
+        password: "riw9wzi0dkdf9l7e",
+        database: "dyacgh3cxp6tc4o8"
+    }
+};
+
+const connection = mysql.createConnection(source.jawsDB);
+
 connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId);
 });
 
-// Export connection
 module.exports = connection;
-
-

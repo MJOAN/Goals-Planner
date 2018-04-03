@@ -1,28 +1,23 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
+const PORT = process.env.PORT || 3306;
 
-const routes = require("./routes/routes.js");
-
-
-app.use(express.static(__dirname + "/public"));
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+const exphbs = require('express-handlebars');
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
+const routes = require("./routes/routes.js");
 app.use("/", routes);
 
-require("./database/config.json");
-require("./database/connection.js");
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
+});
 
-const port = process.env.PORT || 3306;
-
-app.listen(port, function() {
-    console.log("listening on port", port);
-})
