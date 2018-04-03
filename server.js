@@ -1,25 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const path = require("path");
 
 const PORT = process.env.PORT || 3306;
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 const exphbs = require('express-handlebars');
-const viewsPath = path.join(__dirname, 'views');
 
-app.engine("handlebars", exphbs({ 
-	defaultLayout: "main", 
-	layoutsDir: viewsPath + "/layouts"
-}));
-
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 const routes = require("./routes/routes.js");

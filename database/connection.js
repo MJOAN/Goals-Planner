@@ -6,7 +6,7 @@ const mysql = require('mysql');
         port: 3306,
         host: 'localhost',
         user: 'root',
-        password: "",
+        password: "sql",
         database: "goals_db"
     },
     jawsDB: {

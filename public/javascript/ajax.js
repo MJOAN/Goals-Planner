@@ -24,8 +24,8 @@ $(function() {
   $("#updategoal").on("submit", function(event) {
     event.preventDefault();
 
-    //var id = $("[name=id]").val().trim();
-    var id = $(this).data("id");
+    var id = $("[name=id]").val().trim();
+    //var id = $(this).data("id");
     console.log("update button works for id: ", id)
 
     var updatedGoal = {
