@@ -1,8 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const PORT = process.env.PORT || 3306;
 const path = require("path");
+
+const PORT = process.env.PORT || 3306;
 
 app.use(express.static(__dirname + "/public"));
 
@@ -23,9 +24,6 @@ app.set("view engine", "handlebars");
 
 const routes = require("./routes/routes.js");
 app.use("/", routes);
-
-require("./database/config.json");
-require("./database/connection.js");
 
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);

@@ -18,7 +18,7 @@ const mysql = require('mysql');
     }
 };
 
-const connection = mysql.createConnection(source.jawsDB);
+const connection = mysql.createConnection(source.localhost);
 
 connection.connect(function(err) {
     if (err) {
