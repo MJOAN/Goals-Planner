@@ -6,5 +6,5 @@ Check out [my demo](https://greatgoals2018.herokuapp.com/) to study the app's ba
 
 Thank you for stopping by! 
 
-[screenshot2](screenshot2.png)
-[screenshot1](screenshot1.png)
+![screenshot2](screenshot2.png)
+![screenshot1](screenshot1.png)
